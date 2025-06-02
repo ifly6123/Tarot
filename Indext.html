@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchanted Pages - Tarot Reading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Enchanted Pages Tarot</h1>
+            <div class="header-decoration">
+                <span class="star">✦</span>
+                <span class="circle"></span>
+                <span class="star">✦</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="container">
+            <h2>Discover Your Path</h2>
+            <p>Let the cards guide you. Choose a spread below to begin your journey of insight and reflection.</p>
+            <button class="btn" onclick="document.getElementById('spread-selection').scrollIntoView({ behavior: 'smooth' });">
+                Choose Your Spread
+            </button>
+        </section>
+
+        <section id="spread-selection" class="container">
+            <h3>Select a Spread</h3>
+            <div class="spread-options-container">
+                <div class="spread-option-card" data-spread-type="one-card" data-cards="1" data-title="Single Card Guidance">
+                    <h4>One Card Draw</h4>
+                    <p>Quick insight or daily guidance.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="two-card" data-cards="2" data-title="Two Card Spread">
+                    <h4>Two Card Spread</h4>
+                    <p>Comparing two options or aspects.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="three-card" data-cards="3" data-title="Three Card Spread">
+                    <h4>Three Card Spread</h4>
+                    <p>Past, Present, Future or a simple situation.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="diamond" data-cards="4" data-title="Diamond Spread">
+                    <h4>Diamond Spread (4 cards)</h4>
+                    <p>Core issue and influencing factors.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="five-card" data-cards="5" data-title="Five Card Spread">
+                    <h4>Five Card Spread</h4>
+                    <p>Exploring an issue in more detail.</p>
+                </div>
+                 <div class="spread-option-card" data-spread-type="seven-card" data-cards="7" data-title="Seven Card Spread">
+                    <h4>Seven Card Spread</h4>
+                    <p>Deeper dive into influences and outcomes.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="celtic-cross" data-cards="10" data-title="Celtic Cross Spread">
+                    <h4>Celtic Cross Spread (10 cards)</h4>
+                    <p>In-depth analysis of a situation.</p>
+                </div>
+                 <div class="spread-option-card" data-spread-type="nine-card" data-cards="9" data-title="Nine Card Relationship Spread">
+                    <h4>Relationship Spread (9 cards)</h4>
+                    <p>Dynamics between two people.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="eleven-card" data-cards="11" data-title="Path Spread (11 cards)">
+                    <h4>The Path Spread (11 cards)</h4>
+                    <p>Guidance on a journey or decision.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="twelve-card-year" data-cards="12" data-title="Year Ahead Spread (12 cards)">
+                    <h4>Year Ahead Spread (12 cards)</h4>
+                    <p>Insights for each month of the year.</p>
+                </div>
+                <div class="spread-option-card" data-spread-type="twelve-house" data-cards="12" data-title="Astrological Houses Spread (12 cards)">
+                    <h4>Astrological Houses (12 cards)</h4>
+                    <p>Life areas through an astrological lens.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reading-area" class="container" style="display: none;">
+            <h3 id="current-spread-title-display">Your Reading</h3>
+            
+            <div class="controls">
+                <button id="draw-cards-btn" class="btn">Draw Your Cards</button>
+            </div>
+
+            <div id="card-grid-display-area">
+                <div id="card-grid" class="card-grid-layout">
+                    </div>
+            </div>
+
+            <div id="card-interpretation-display" style="display: none;">
+                <h3>Card Interpretations</h3>
+                </div>
+
+            <div class="controls">
+                <button id="reset-reading-btn" class="btn" style="display:none;">Start New Reading</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-decoration">
+                <span class="circle small"></span>
+                <span class="star small">✧</span>
+                <span class="text-decoration">May your path be clear</span>
+                <span class="star small">✧</span>
+                <span class="circle small"></span>
+            </div>
+            <p>&copy; <span id="current-year"></span> Enchanted Pages Tarot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="card-hover-tooltip">
+        <h5>Card Name</h5>
+        <p>Keywords will appear here.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

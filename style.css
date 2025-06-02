@@ -1,0 +1,715 @@
+/* --- General Styles & Variables --- */
+:root {
+    /* Fonts */
+    --font-heading: 'Caveat', cursive;
+    --font-body: 'Patrick Hand', cursive;
+
+    /* Light Theme Colors */
+    --color-background: #fffaf0; /* Floral White */
+    --color-text-primary: #5d503c; /* Darker, softer brown */
+    --color-text-secondary: #85766a; 
+    --color-card-bg: #ffffff;
+    --color-card-border: #e0d8d0;
+    --color-shadow: rgba(74, 64, 58, 0.15);
+
+    /* Accent Colors */
+    --color-accent-pink: #fec5bb;
+    --color-accent-green: #b7e4c7;
+    --color-accent-blue: #a2d2ff;
+    --color-accent-yellow: #fff1a8;
+    --color-accent-coral: #ff9b85;
+    --color-accent-lavender: #dcd0ff;
+    
+    --color-button-bg: var(--color-accent-coral);
+    --color-button-text: #ffffff;
+    --color-button-hover-bg: #ff7f6e;
+
+    /* Card Dimensions - Significantly Increased for HD Images */
+    --card-default-width: 230px;
+    --card-default-height: 394px;
+    
+    --card-medium-width: 180px;
+    --card-medium-height: 308px;
+    
+    --card-small-width: 150px;
+    --card-small-height: 257px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    font-size: 18px;
+    background-image: 
+        radial-gradient(var(--color-text-secondary) 0.5px, transparent 0.5px),
+        radial-gradient(var(--color-text-secondary) 0.5px, var(--color-background) 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 95%; 
+    max-width: 1600px; 
+    margin: 0 auto;
+    padding: 15px; 
+    background-color: rgba(255, 250, 240, 0.92); 
+    border-radius: 10px;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 3.2rem;
+    text-align: center;
+    color: var(--color-accent-coral);
+    text-shadow: 1px 1px 2px var(--color-shadow);
+}
+
+h2 {
+    font-size: 2.6rem;
+    text-align: center;
+    color: var(--color-accent-pink);
+}
+
+h3 { /* Used for "Select a Spread" and "Your Reading" */
+    font-size: 2.5rem; /* Made slightly larger */
+    text-align: center;
+    color: var(--color-accent-green);
+    margin-bottom: 25px; /* More space below */
+}
+
+h4 { /* Used for spread option titles and interpretation card name */
+    font-size: 1.9rem;
+    color: var(--color-accent-blue);
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--color-text-secondary);
+}
+
+/* --- Header & Footer Decorations --- */
+.header-decoration, .footer-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--color-accent-lavender);
+}
+.footer-decoration .text-decoration {
+    font-family: var(--font-heading);
+    color: var(--color-accent-pink);
+    font-size: 1.5rem;
+}
+.star {
+    color: var(--color-accent-yellow);
+    text-shadow: 0 0 5px var(--color-accent-yellow);
+    font-size: 1.5em;
+}
+.star.small { font-size: 1em; }
+.circle {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--color-accent-blue);
+}
+.circle.small { width: 6px; height: 6px;}
+
+
+/* --- Header & Footer --- */
+header {
+    background-color: var(--color-accent-yellow);
+    padding: 20px 0;
+    border-bottom: 4px ridge var(--color-accent-pink);
+    text-align: center;
+    position: relative;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1)),
+                      linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1));
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.5;
+    z-index: 0;
+}
+header .container {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+}
+
+
+footer {
+    background-color: var(--color-accent-lavender);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    border-top: 4px ridge var(--color-accent-green);
+    font-size: 0.9rem;
+    position: relative;
+}
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1)),
+                      linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1));
+    background-size: 25px 25px;
+    background-position: 0 0, 12.5px 12.5px;
+    opacity: 0.6;
+    z-index: 0;
+}
+footer .container {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+}
+
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: bold;
+    border: 2px solid var(--color-button-text);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 3px 3px 8px var(--color-shadow);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background-color: var(--color-button-hover-bg);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 4px 4px 12px rgba(74, 64, 58, 0.25);
+}
+
+/* --- Sections --- */
+#hero, #spread-selection, #reading-area {
+    padding: 35px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#reading-area .container { 
+    max-width: none; 
+    width: 100%; 
+}
+
+
+/* --- Spread Selection Cards --- */
+.spread-options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.spread-option-card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 18px;
+    width: 320px; 
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px double var(--color-accent-blue);
+    box-shadow: 4px 4px 10px var(--color-shadow);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+.spread-option-card::before {
+    content: '✧';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: var(--color-accent-yellow);
+    opacity: 0.7;
+}
+.spread-option-card::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-accent-pink);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+
+.spread-option-card:hover {
+    transform: translateY(-6px) rotate(1.5deg);
+    box-shadow: 6px 6px 18px rgba(74, 64, 58, 0.2);
+    border-color: var(--color-accent-pink);
+}
+
+.spread-option-card h4 {
+    margin-bottom: 8px;
+    color: var(--color-accent-coral);
+}
+.spread-option-card p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* --- Reading Area & Card Grid --- */
+#card-grid-display-area {
+    margin: 30px auto; 
+    padding: 20px; 
+    background-color: rgba(220, 208, 255, 0.5); 
+    border-radius: 18px;
+    min-height: 400px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px dashed var(--color-accent-lavender);
+    overflow-x: auto; 
+    width: fit-content; 
+    max-width: 98%; 
+}
+
+.card-grid-layout {
+    display: grid;
+    gap: 35px; /* Increased gap for larger cards + numerals */
+    justify-items: center;
+    align-items: start; /* Align items to the start for numeral positioning */
+    padding: 15px; 
+}
+
+/* --- Individual Card Styling (Container for card + numeral) --- */
+.card-slot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; /* Space between numeral and card */
+}
+
+.roman-numeral {
+    font-family: var(--font-heading);
+    font-size: 1.8rem; /* Size of the Roman numeral */
+    color: var(--color-text-primary);
+    font-weight: bold;
+    padding: 2px 5px;
+    background-color: rgba(255, 250, 240, 0.7); /* Slight background for numeral */
+    border-radius: 5px;
+    line-height: 1;
+}
+
+.tarot-card-display {
+    width: var(--card-default-width); 
+    height: var(--card-default-height);
+    background-color: var(--color-card-bg);
+    border: 3px solid var(--color-accent-green);
+    border-radius: 12px;
+    display: flex; /* This is for the card itself, not the container */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.7s, box-shadow 0.4s;
+    transform-style: preserve-3d;
+    position: relative;
+    box-shadow: 3px 3px 7px var(--color-shadow);
+}
+
+.tarot-card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+}
+
+.card-front-design {
+    background-color: var(--color-accent-yellow);
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctext x='2' y='15' font-family='Arial' font-size='14px' fill='%23dcd0ff'%3E☽%3C/text%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctext x='5' y='12' font-family='Arial' font-size='10px' fill='%23b7e4c7'%3E✶%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 30px 30px, 25px 25px;
+    background-position: 0 0, 15px 15px;
+}
+.card-front-design span {
+    font-size: 4rem; 
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    opacity: 0.6;
+    text-shadow: 1px 1px 1px var(--color-background);
+}
+
+.card-back-content {
+    background-color: var(--color-card-bg);
+    transform: rotateY(180deg);
+}
+
+.tarot-card-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 9px;
+}
+
+.tarot-card-display.is-flipped .card-front-design {
+    transform: rotateY(180deg);
+}
+.tarot-card-display.is-flipped .card-back-content {
+    transform: rotateY(0deg);
+}
+.tarot-card-display.is-flipped {
+    border-color: var(--color-accent-pink);
+    box-shadow: 4px 4px 10px rgba(74, 64, 58, 0.2);
+}
+.tarot-card-display:hover:not(.is-flipped) { /* Hover effect for un-flipped cards */
+    transform: scale(1.03);
+    box-shadow: 5px 5px 12px var(--color-shadow);
+}
+.tarot-card-display.is-flipped:hover { /* Hover effect for flipped cards */
+    box-shadow: 6px 6px 15px rgba(255, 155, 133, 0.4); /* Coral glow */
+    border-color: var(--color-accent-coral);
+}
+
+
+/* --- Interpretation Area (List of all cards) --- */
+#card-interpretation-display {
+    margin: 30px auto; 
+    padding: 20px; /* Reduced padding slightly */
+    background-color: rgba(255, 250, 240, 0.95); /* More opaque background */
+    border-radius: 18px;
+    text-align: left;
+    border: 3px dashed var(--color-accent-blue);
+    box-shadow: 0 0 15px rgba(74, 64, 58, 0.1);
+    max-width: 1000px; /* Increased max width */
+}
+#card-interpretation-display h3 { /* Title for this section */
+    color: var(--color-accent-coral);
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    text-align: center;
+    border-bottom: 2px dotted var(--color-accent-pink);
+    padding-bottom: 10px;
+}
+.interpretation-list-item {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-accent-lavender);
+    border-left: 5px solid var(--color-accent-green);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px var(--color-shadow);
+}
+.interpretation-list-item .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-accent-coral);
+    margin-bottom: 5px;
+}
+.interpretation-list-item .card-title .roman-numeral-list {
+    color: var(--color-text-primary);
+    margin-right: 10px;
+}
+.interpretation-list-item .position-meaning {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+.interpretation-list-item .keywords {
+    color: var(--color-text-primary);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* --- Hover Tooltip --- */
+#card-hover-tooltip {
+    position: fixed; /* Fixed position relative to viewport */
+    background-color: rgba(93, 80, 60, 0.95); /* Dark brown, semi-transparent */
+    color: var(--color-background); /* Light text */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000; /* Ensure it's on top */
+    max-width: 300px;
+    font-size: 1rem;
+    line-height: 1.4;
+    pointer-events: none; /* So it doesn't interfere with mouse events on elements below */
+    display: none; /* Hidden by default */
+    border: 2px solid var(--color-accent-yellow);
+}
+#card-hover-tooltip h5 {
+    font-family: var(--font-heading);
+    color: var(--color-accent-yellow);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    border-bottom: 1px dotted var(--color-accent-lavender);
+    padding-bottom: 5px;
+}
+#card-hover-tooltip p {
+    color: var(--color-background); /* Ensure p inside tooltip is light */
+    margin-bottom: 0;
+}
+
+
+.controls {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* --- LAYOUTS FOR DIFFERENT SPREADS --- */
+/* One Card */
+.one-card-spread-layout { grid-template-columns: 1fr; max-width: calc(var(--card-default-width) + 40px); }
+
+/* Two Card */
+.two-card-spread-layout { grid-template-columns: repeat(2, 1fr); max-width: calc(var(--card-default-width) * 2 + var(--grid-gap, 35px) + 40px); }
+
+/* Three Card */
+.three-card-spread-layout { grid-template-columns: repeat(3, 1fr); max-width: calc(var(--card-default-width) * 3 + (var(--grid-gap, 35px) * 2) + 40px); }
+
+/* Diamond Spread (4 cards) */
+.diamond-spread-layout {
+    grid-template-areas:
+        ". p1 ."
+        "p2 . p3"
+        ". p4 .";
+    grid-template-columns: repeat(3, var(--card-default-width));
+    grid-template-rows: repeat(3, var(--card-default-height));
+    width: fit-content;
+    gap: 25px; 
+}
+.diamond-spread-layout .card-slot-container[data-grid-area="p1"] { grid-area: p1; }
+.diamond-spread-layout .card-slot-container[data-grid-area="p2"] { grid-area: p2; }
+.diamond-spread-layout .card-slot-container[data-grid-area="p3"] { grid-area: p3; }
+.diamond-spread-layout .card-slot-container[data-grid-area="p4"] { grid-area: p4; }
+
+/* Five Card Spread (Cross shape) */
+.five-card-spread-layout {
+    grid-template-areas:
+        ". p1 ."
+        "p2 p3 p4"
+        ". p5 .";
+    grid-template-columns: repeat(3, var(--card-default-width));
+    grid-template-rows: repeat(3, var(--card-default-height));
+    width: fit-content;
+    gap: 25px;
+}
+.five-card-spread-layout .card-slot-container[data-grid-area="p1"] { grid-area: p1; }
+.five-card-spread-layout .card-slot-container[data-grid-area="p2"] { grid-area: p2; }
+.five-card-spread-layout .card-slot-container[data-grid-area="p3"] { grid-area: p3; }
+.five-card-spread-layout .card-slot-container[data-grid-area="p4"] { grid-area: p4; }
+.five-card-spread-layout .card-slot-container[data-grid-area="p5"] { grid-area: p5; }
+
+/* For spreads using --card-medium-width */
+.seven-card-spread-layout,
+.nine-card-spread-layout,
+.eleven-card-spread-layout,
+.twelve-card-spread-layout {
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-medium-width), 1fr));
+    width: 100%; 
+    max-width: calc(var(--card-medium-width) * 5 + (35px * 4) + 40px); 
+}
+.seven-card-spread-layout .card-slot-container .tarot-card-display,
+.nine-card-spread-layout .card-slot-container .tarot-card-display, 
+.eleven-card-spread-layout .card-slot-container .tarot-card-display,
+.twelve-card-spread-layout .card-slot-container .tarot-card-display {
+    width: var(--card-medium-width); height: var(--card-medium-height);
+}
+
+.nine-card-spread-layout.specific-3x3 { 
+    grid-template-columns: repeat(3, var(--card-medium-width));
+    grid-template-rows: repeat(3, var(--card-medium-height));
+    width: fit-content;
+    max-width: none; 
+}
+
+
+/* Celtic Cross (10 cards) - Using --card-small-width */
+.celtic-cross-spread-layout {
+    grid-template-areas:
+        ".     .     pos5   .      ."
+        ".     .     pos6   .      ."
+        "pos1  pos3  pos3   pos4   pos2"
+        ".     .     pos10  .      ."
+        ".     .     pos9   .      ."
+        ".     .     pos8   .      ."
+        ".     .     pos7   .      .";
+    grid-template-columns: repeat(5, var(--card-small-width));
+    grid-template-rows: repeat(2, calc(var(--card-small-height) * 0.45)) 
+                        calc(var(--card-small-height)) 
+                        repeat(4, calc(var(--card-small-height) * 0.45)); 
+    gap: 18px; 
+    width: fit-content;
+    align-items: center;
+}
+.celtic-cross-spread-layout .card-slot-container .tarot-card-display {
+    width: var(--card-small-width); height: var(--card-small-height);
+}
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos1"] { grid-area: pos1; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos2"] { grid-area: pos2; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos3"] { grid-area: pos3; z-index: 1; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="posCross"] {
+    grid-area: pos3; 
+    /* The card-slot-container itself is not rotated, only the .tarot-card-display inside it if needed by JS */
+    /* For CSS only rotation, the .tarot-card-display needs to be targeted */
+    z-index: 2;
+}
+/* If rotating the card itself via CSS for posCross: */
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="posCross"] .tarot-card-display {
+    transform: rotate(90deg) scale(0.95);
+    /* Adjust margins if card is rotated to re-center it. This is complex. */
+    /* margin-top: calc((var(--card-small-height) - var(--card-small-width)) / 2 ); */
+    /* margin-left: calc((var(--card-small-width) - var(--card-small-height)) / 2 ); */
+}
+
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos4"] { grid-area: pos4; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos5"] { grid-area: pos5; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos6"] { grid-area: pos6; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos7"] { grid-area: pos7; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos8"] { grid-area: pos8; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos9"] { grid-area: pos9; }
+.celtic-cross-spread-layout .card-slot-container[data-grid-area="pos10"] { grid-area: pos10; }
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) { 
+    :root { 
+        --card-default-width: 200px;
+        --card-default-height: 343px;
+        --card-medium-width: 160px;
+        --card-medium-height: 274px;
+        --card-small-width: 130px;
+        --card-small-height: 222px;
+    }
+     .container { max-width: 1400px; padding: 15px; }
+     #card-grid-display-area { padding: 15px; }
+     .card-grid-layout { gap: 20px; }
+}
+
+@media (max-width: 992px) { /* Tablet */
+    :root {
+        --card-default-width: 160px; /* Adjusted for tablet */
+        --card-default-height: 274px;
+        --card-medium-width: 130px; /* Adjusted for tablet */
+        --card-medium-height: 222px;
+        --card-small-width: 110px;  /* Adjusted for tablet */
+        --card-small-height: 188px;
+    }
+    .container { max-width: 950px; padding: 10px; }
+    .card-grid-layout { gap: 18px; }
+    #card-grid-display-area { padding: 10px; }
+    
+    .seven-card-spread-layout,
+    .eleven-card-spread-layout,
+    .twelve-card-spread-layout {
+        max-width: calc(var(--card-medium-width) * 4 + (18px * 3) + 20px); 
+    }
+    /* Celtic cross rotated card margin adjustment might be needed here if scale changes */
+}
+
+
+@media (max-width: 768px) { /* Large Mobile / Small Tablet */
+    :root {
+        --card-default-width: 130px; /* Adjusted */
+        --card-default-height: 222px;
+        --card-medium-width: 110px; /* Adjusted */
+        --card-medium-height: 188px;
+        --card-small-width: 90px;  /* Adjusted */
+        --card-small-height: 154px;
+    }
+    .container { background-color: rgba(255, 250, 240, 0.95); }
+    h1 { font-size: 2.6rem; }
+    h2 { font-size: 2.1rem; }
+    h3 { font-size: 2rem; } /* Adjusted reading area title */
+    .roman-numeral { font-size: 1.5rem; }
+
+    .spread-option-card {
+        width: calc(50% - 20px);
+    }
+    .card-grid-layout { gap: 15px; } 
+
+    .diamond-spread-layout, .five-card-spread-layout {
+        grid-template-areas: none; 
+        grid-template-columns: repeat(auto-fit, minmax(var(--card-default-width), 1fr));
+        max-width: calc(var(--card-default-width) * 2 + 30px);
+    }
+    .celtic-cross-spread-layout {
+        grid-template-areas:
+            "pos5" "pos6" "pos3" "posCross" "pos1" "pos2" "pos4" "pos10" "pos9" "pos8" "pos7";
+        grid-template-columns: 1fr;
+        width: auto; max-width: calc(var(--card-small-width) + 30px);
+        gap: 8px;
+    }
+    .celtic-cross-spread-layout .card-slot-container[data-grid-area="posCross"] .tarot-card-display {
+        transform: rotate(0deg) scale(1); 
+        margin: -15px 0 5px 0; 
+    }
+    .seven-card-spread-layout,
+    .nine-card-spread-layout.specific-3x3, 
+    .eleven-card-spread-layout,
+    .twelve-card-spread-layout {
+        max-width: calc(var(--card-medium-width) * 3 + (15px * 2) + 20px); 
+    }
+}
+
+@media (max-width: 480px) { /* Small Mobile */
+    :root {
+        --card-default-width: 100px; 
+        --card-default-height: 171px;
+        --card-medium-width: 90px; 
+        --card-medium-height: 154px;
+        --card-small-width: 75px; 
+        --card-small-height: 128px;
+    }
+    body { font-size: 16px; }
+    .container { width: 96%; padding: 8px; background-color: rgba(255, 250, 240, 0.98); }
+    .spread-option-card {
+        width: 100%;
+    }
+    .btn { font-size: 1.3rem; padding: 10px 20px; }
+    #card-interpretation-display p { font-size: 1.05rem; }
+    .card-grid-layout { padding: 5px; gap: 10px;}
+    #card-grid-display-area { padding: 10px; }
+    .roman-numeral { font-size: 1.3rem; }
+
+
+    .celtic-cross-spread-layout .card-slot-container[data-grid-area="posCross"] .tarot-card-display {
+        margin: -10px 0 5px 0; 
+    }
+    .seven-card-spread-layout,
+    .nine-card-spread-layout,
+    .eleven-card-spread-layout,
+    .twelve-card-spread-layout {
+        max-width: calc(var(--card-medium-width) * 2 + 10px + 20px); 
+    }
+}
+
